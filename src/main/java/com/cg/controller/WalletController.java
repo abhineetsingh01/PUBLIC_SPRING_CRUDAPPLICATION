@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +27,6 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/v1/users")
-
 public class WalletController {
 
 	@Autowired
@@ -46,6 +44,7 @@ public class WalletController {
 			response.setHttpStatus(HttpStatus.CONFLICT);
 			response.setHttpStatusValue(HttpStatus.CONFLICT.value());
 			response.setMessage("User with given email id already exists");
+			System.out.println(response);
 
 			return ResponseEntity.status(HttpStatus.CONFLICT).contentType(MediaType.APPLICATION_JSON).build();
 		} else {
